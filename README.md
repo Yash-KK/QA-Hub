@@ -10,7 +10,7 @@ Quora Like Web Application built using Django, DRF and Vue JS
 This is a web application that aims to replicate the main features of Quora, such as user registration, asking and answering questions, voting on answers, and searching for content. The backend of the application is built using Django and Django Rest Framework (DRF), while the frontend is built using Vue JS.
 
 <hr>
-
+### Usage 
 The application has a simple user interface that allows users to register, log in, ask and answer questions, and search for content. Here are some of the main features:
 
 **Registration** : Users can create a new account by providing their email address, username, and password.
