@@ -13,5 +13,5 @@ This is a web application that aims to replicate the main features of Quora, suc
 
 The application has a simple user interface that allows users to register, log in, ask and answer questions, and search for content. Here are some of the main features:
 
-###Registration: 
+### Registration: 
 Users can create a new account by providing their email address, username, and password.
