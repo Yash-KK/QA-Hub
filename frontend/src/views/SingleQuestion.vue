@@ -10,9 +10,11 @@
             <p>{{ question.created_at }}</p>
 
             <router-link v-if="loggedUser == question.author" :to="{name: 'question-editor', params: {slug:question.slug}}" class="btn btn-warning btn-sm">Edit</router-link>
+            <button @click="deleteQuestion" style="margin-left: 5px;" v-if="loggedUser == question.author" class="btn btn-danger btn-sm">Delete</button>
+
             <p style="color: green;" v-if="userHasAnswered">You have answered...</p>
             <div v-else>
-                <button @click="showForm=!showForm" class="btn btn-success" >Answer the Question</button>
+                <button style="margin-top: 10px;" @click="showForm=!showForm" class="btn btn-success" >Answer the Question</button>
             </div>
             <hr>
             <div v-if="showForm">
@@ -29,7 +31,8 @@
         <div v-if="answers">
             <all-answers v-for="answer in answers"
             :key="answer.pk"
-            :answer="answer">
+            :answer="answer"
+            :loggedUser="loggedUser">
             </all-answers>
         </div>
       
@@ -126,6 +129,21 @@ import AllAnswers from '@/components/AllAnswers.vue';
                 } else{
                     alert("Do not submit an empty form!")
                 }
+            },
+
+            deleteQuestion(){
+                let endpoint = `/questions/${this.slug}/`;
+                axios.defaults.xsrfCookieName = 'csrftoken'; 
+                axios.defaults.xsrfHeaderName = 'X-CSRFToken'; 
+                
+                axios.delete(endpoint)
+                .then(response =>{
+                    console.log(response.data);
+                    this.$router.push({
+                        name: 'home'
+                    })
+                })
+                .catch(error => console.log(error));
             }
         },
 

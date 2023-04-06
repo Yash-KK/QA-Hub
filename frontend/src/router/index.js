@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SingleQuestion from '../views/SingleQuestion.vue';
+
 import QuestionEditor  from '../views/QuestionEditor.vue';
+import AnswerEditor from '../views/AnswerEditor.vue';
 
 
 const routes = [
@@ -21,9 +23,14 @@ const routes = [
     name: 'question-editor',
     component: QuestionEditor,
     props: true
-  }
+  },
 
-  
+  {
+    path: '/answer/:id/',
+    name: 'answer-editor',
+    component: AnswerEditor,
+    props: true
+  }
  
 ]
 
