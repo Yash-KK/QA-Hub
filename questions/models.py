@@ -46,6 +46,9 @@ class Answer(TimeStamp):
     def __str__(self):
         return f"{self.body}: {self.author.username}"
     
+    def all_voters(self):
+        return [v for v in self.voters.all()]
+    
     class Meta:
         verbose_name = 'Answer'
         verbose_name_plural = "Answer's"

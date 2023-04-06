@@ -6,5 +6,9 @@ from .models import (
     Answer
 )
 # Register your models here.
+
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ['body', 'author', 'all_voters']
 admin.site.register(Question)
-admin.site.register(Answer)
+admin.site.register(Answer, AnswerAdmin)
+
