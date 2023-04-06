@@ -13,7 +13,9 @@ from rest_framework.status import (
 
     HTTP_400_BAD_REQUEST
 )
-
+from .paginations import (
+    NoCountPagination
+)
 from rest_framework.permissions import (
     IsAuthenticated
 )
@@ -35,6 +37,7 @@ from .models import (
 # Create your views here.
 
 class QuestionListAPI(generics.ListCreateAPIView):
+    pagination_class = NoCountPagination
     permission_classes = [IsAuthenticated]
     serializer_class = QuestionSerializer
     queryset = Question.objects.all()
@@ -65,6 +68,7 @@ class AnswerCreateAPI(generics.CreateAPIView):
         serializer.save(author=authenticated_user, question=question_instance)
 
 class AnswerListAPI(generics.ListAPIView):
+    pagination_class = NoCountPagination
     permission_classes = [IsAuthenticated]
     serializer_class = AnswerSerializer
     queryset = Answer.objects.all()
@@ -78,6 +82,7 @@ class AnswerDetailAPI(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
     serializer_class = AnswerSerializer
     queryset = Answer.objects.filter()
+
 
 class AnswerLikeAPI(APIView):
     permission_classes = [IsAuthenticated]
