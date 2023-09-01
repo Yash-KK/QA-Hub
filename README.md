@@ -25,3 +25,29 @@ The application has a simple user interface that allows users to register, log i
 **Voting on Answers**: Authenticated users can vote on answers by clicking on the upvote or downvote buttons next to each answer.
 
 **Searching for Content**: Users can search for questions and answers by entering keywords in the search bar.
+
+
+<hr>
+ <h2>SetUp </h2>
+ <strong> Clone the git repository locally: </strong> <br>
+ 
+```
+https://github.com/Yash-KK/QA-Hub.git
+```
+
+ <strong> Create and activate a Virtual Envionment: </strong> <br>
+```
+ virtualenv venv
+ source venv/bin/activate
+```
+
+ <strong> Install Dependencies: </strong> <br>
+```
+pip install -r requirements.txt
+```
+
+ <strong> Setup Database and Run the Development Server </strong> <br>
+```
+python manage.py migrate
+python manage.py runserver
+```
